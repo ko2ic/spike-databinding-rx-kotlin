@@ -1,12 +1,11 @@
 package ko2ic.sample
 
-import android.support.test.InstrumentationRegistry
+import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
-
+import ko2ic.sample.ui.activity.MainActivity
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -15,10 +14,16 @@ import org.junit.Assert.*
  */
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
+
+    @Rule
+    @JvmField
+    val rule = ActivityTestRule(MainActivity::class.java)
+
     @Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("ko2ic.sample", appContext.packageName)
+    fun onClickTest() {
+
+        // TODO: バグってるからandroid plugin 3では動作しないようです。
+        // https://github.com/realm/realm-java/issues/4662
+
     }
 }

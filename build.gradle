@@ -1,19 +1,22 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.1.2-4'
+    ext.kotlin_version = '1.1.3-2'
+    ext.retrofit_version = "2.2.0"
+    ext.dagger_version = "2.11"
+    ext.realm_version = "3.3.0"
     repositories {
         maven { url 'https://maven.google.com' }
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0-alpha4'
+        classpath 'com.android.tools.build:gradle:3.0.0-alpha8'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath "io.realm:realm-gradle-plugin:$realm_version"
     }
 }
+
+
 
 allprojects {
     repositories {
@@ -26,3 +29,28 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext.libraries = [
+        test_android_compile      : [dependencies.create("com.android.support.test.espresso:espresso-core:2.2.2") {
+            exclude group: "com.android.support', module: 'support-annotations"
+        }, "com.android.support.test:runner:0.5",
+                                     "com.android.support.test:rules:0.5",
+                                     "org.mockito:mockito-android:2.+"
+        ],
+        test_compile              : ["com.squareup.okhttp3:mockwebserver:3.+",
+                                     "org.robolectric:robolectric:3.4-rc4",
+                                     "org.mockito:mockito-core:2.+",
+                                     "org.assertj:assertj-core:3.+",
+                                     "junit:junit:4.12",
+                                     project(":test")],
+        dagger_provided           : "com.google.dagger:dagger:$dagger_version",
+        dagger_annotationProcessor: ["com.google.dagger:dagger-compiler:$dagger_version",
+                                     "com.google.dagger:dagger-android-processor:$dagger_version"],
+        dagger_kapt               : ["com.google.dagger:dagger-compiler:$dagger_version",
+                                     "com.google.dagger:dagger-android-processor:$dagger_version"],
+        dagger                    : "com.google.dagger:dagger-android:$dagger_version",
+        rxjava                    : ["io.reactivex.rxjava2:rxjava:2.1.1",
+                                     "io.reactivex.rxjava2:rxandroid:2.0.1"
+                                     // 'com.jakewharton.rxrelay2:rxrelay:2.0.0']
+        ]
+]
