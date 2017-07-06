@@ -11,10 +11,6 @@ import android.view.View;
 
 import io.reactivex.functions.Action;
 
-/**
- * Created by ishii_ko on 2017/06/26.
- */
-
 @BindingMethods({
         @BindingMethod(
                 type = NavigationView.class,
@@ -47,17 +43,6 @@ public class BindingConversions {
         int visibility = (visible != null && visible) ? View.VISIBLE : View.GONE;
         view.setVisibility(visibility);
     }
-
-//    @BindingAdapter({"items", "adapter"})
-//    public static void bindAdapterWithDefaultBinder(@NonNull RecyclerView recyclerView, @Nullable Observable<List<ViewModel>> items, @Nullable RecyclerViewAdapter adapter) {
-//        adapter.setViewModels(items);
-//        recyclerView.setAdapter(adapter);
-//    }
-//
-//
-//    public static RecyclerViewAdapter getMyRecyclerViewAdapter() {
-//        return new RecyclerViewAdapter();
-//    }
 }
 
 

@@ -3,7 +3,13 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/di/di.iml" filepath="$PROJECT_DIR$/di/di.iml" />
+      <module fileurl="file://$PROJECT_DIR$/domains/domains.iml" filepath="$PROJECT_DIR$/domains/domains.iml" />
+      <module fileurl="file://$PROJECT_DIR$/infrastructures/infrastructures.iml" filepath="$PROJECT_DIR$/infrastructures/infrastructures.iml" />
+      <module fileurl="file://$PROJECT_DIR$/moduledomains/moduledomains.iml" filepath="$PROJECT_DIR$/moduledomains/moduledomains.iml" />
+      <module fileurl="file://$PROJECT_DIR$/moduleinfrastructures/moduleinfrastructures.iml" filepath="$PROJECT_DIR$/moduleinfrastructures/moduleinfrastructures.iml" />
       <module fileurl="file://$PROJECT_DIR$/spike-databinding-rx-kotlin.iml" filepath="$PROJECT_DIR$/spike-databinding-rx-kotlin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test/test.iml" filepath="$PROJECT_DIR$/test/test.iml" />
     </modules>
   </component>
 </project>

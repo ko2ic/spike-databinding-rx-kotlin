@@ -1,12 +1,11 @@
 package ko2ic.sample.ui.adapter
 
-import ko2ic.sample.ui.viewmodel.ViewModel
+import ko2ic.sample.BR
+import ko2ic.sample.ui.viewmodel.CollectionItemViewModel
 
-
-/**
- * Created by ishii_ko on 2017/06/30.
- */
 interface ItemViewTypeProvider {
-    fun getLayoutRes(model: ViewModel): Int
-    fun getBindingVariableId(model: ViewModel): Int
+
+    fun getLayoutRes(modelCollectionItem: CollectionItemViewModel): Int
+
+    fun getBindingVariableId(modelCollectionItem: CollectionItemViewModel) = BR.viewModel
 }
