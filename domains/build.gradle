@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 26
@@ -46,6 +45,9 @@ dependencies {
     annotationProcessor libraries.dagger_annotationProcessor
     kapt libraries.dagger_kapt
     implementation libraries.dagger
+
+    implementation libraries.room
+    annotationProcessor libraries.room_annotationProcessor
 
     androidTestImplementation libraries.test_android_compile
     testImplementation libraries.test_compile

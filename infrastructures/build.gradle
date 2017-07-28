@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 25
@@ -37,7 +36,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    
+
     compile project(':domains')
 
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
@@ -51,6 +50,11 @@ dependencies {
     annotationProcessor libraries.dagger_annotationProcessor
     kapt libraries.dagger_kapt
     implementation libraries.dagger
+
+    implementation libraries.room
+    annotationProcessor libraries.room_annotationProcessor
+    testImplementation "android.arch.persistence.room:testing:1.0.0-alpha5"
+    implementation "android.arch.persistence.room:rxjava2:1.0.0-alpha5"
 
     androidTestImplementation libraries.test_android_compile
     testImplementation libraries.test_compile

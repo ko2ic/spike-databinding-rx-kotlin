@@ -1,9 +1,8 @@
 package ko2ic.sample.model.entity
 
 import com.google.gson.annotations.SerializedName
-import io.realm.RealmObject
 
-open class Repo() : RealmObject() {
+open class Repo() {
 
     var id: Int = 0
 

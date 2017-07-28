@@ -1,11 +1,10 @@
 package ko2ic.sample.model.entity
 
+import android.arch.persistence.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-import io.realm.RealmList
-import io.realm.RealmObject
-import io.realm.annotations.PrimaryKey
 
-open class SearchResult : RealmObject() {
+
+open class SearchResult {
 
     @PrimaryKey
     var query = ""
@@ -16,5 +15,5 @@ open class SearchResult : RealmObject() {
     @SerializedName("incomplete_results")
     var isIncompleteResults: Boolean = false
 
-    var items: RealmList<Repo> = RealmList()
+    var items: List<Repo> = ArrayList()
 }
