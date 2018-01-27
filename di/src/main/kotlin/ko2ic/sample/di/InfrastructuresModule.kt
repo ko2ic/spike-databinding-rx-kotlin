@@ -2,6 +2,8 @@ package ko2ic.sample.di
 
 import dagger.Module
 import dagger.Provides
+import io.objectbox.BoxStore
+import ko2ic.sample.common.repository.TransactionTemplateForObjectbox
 import ko2ic.sample.common.repository.http.HttpClient
 import ko2ic.sample.repository.GitHubRepository
 import ko2ic.sample.repository.GithubRepositoryImpl
@@ -14,11 +16,11 @@ class InfrastructuresModule {
 
     @Provides
     @Singleton
-    fun provideGitHubRepository(store: GitHubLocalStore, client: HttpClient): GitHubRepository = GithubRepositoryImpl(store, client)
+    fun provideGitHubRepository(store: GitHubLocalStore, client: HttpClient, tx: TransactionTemplateForObjectbox): GitHubRepository = GithubRepositoryImpl(store, client, tx)
 
     @Provides
     @Singleton
-    fun provideGitHubLocalStore() = GitHubLocalStore()
+    fun provideGitHubLocalStore(boxStore: BoxStore) = GitHubLocalStore(boxStore)
 
     @Provides
     @Singleton
@@ -27,5 +29,6 @@ class InfrastructuresModule {
     @Provides
     @Singleton
     fun provideHttpClientLocator() = HttpClientDefault()
+
 
 }

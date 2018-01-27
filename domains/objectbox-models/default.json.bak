@@ -1,0 +1,118 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:3247792349157722989",
+      "lastPropertyId": "4:7903181227900541848",
+      "name": "SearchResultForObjectbox",
+      "properties": [
+        {
+          "id": "1:7082375178137514994",
+          "name": "query"
+        },
+        {
+          "id": "2:5931998304716043457",
+          "name": "id"
+        },
+        {
+          "id": "3:5961329936275166188",
+          "name": "totalCount"
+        },
+        {
+          "id": "4:7903181227900541848",
+          "name": "isIncompleteResults"
+        }
+      ],
+      "relations": [
+        {
+          "id": "3:5964705194141283797",
+          "name": "items"
+        },
+        {
+          "id": "4:5907851064458427023",
+          "name": "many"
+        }
+      ]
+    },
+    {
+      "id": "2:128832478065710430",
+      "lastPropertyId": "8:8089904879379545965",
+      "name": "RepoForObjectbox",
+      "properties": [
+        {
+          "id": "1:7121235909449317149",
+          "name": "id"
+        },
+        {
+          "id": "2:5765946941912095399",
+          "name": "name"
+        },
+        {
+          "id": "3:5000336817529519850",
+          "name": "fullName"
+        },
+        {
+          "id": "4:1190747377748985308",
+          "name": "stars"
+        },
+        {
+          "id": "7:7488900293432930028",
+          "indexId": "3:84944857842749504",
+          "name": "permissionsId"
+        },
+        {
+          "id": "8:8089904879379545965",
+          "indexId": "4:5420758180155222995",
+          "name": "rootId"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:8295921459955820642",
+      "lastPropertyId": "4:7023760494620632387",
+      "name": "PermissionDtoForObjectbox",
+      "properties": [
+        {
+          "id": "1:41177634432408581",
+          "name": "id"
+        },
+        {
+          "id": "2:8757486197176601021",
+          "name": "haveAdmin"
+        },
+        {
+          "id": "3:1453705155424715627",
+          "name": "havePushAuthorizetion"
+        },
+        {
+          "id": "4:7023760494620632387",
+          "name": "havePullAuthorizetion"
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "3:8295921459955820642",
+  "lastIndexId": "4:5420758180155222995",
+  "lastRelationId": "4:5907851064458427023",
+  "lastSequenceId": "0:0",
+  "modelVersion": 4,
+  "modelVersionParserMinimum": 4,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [
+    5016963796564505554,
+    841015238003516275
+  ],
+  "retiredPropertyUids": [
+    3545014799888074698,
+    1675883812734190570
+  ],
+  "retiredRelationUids": [
+    8900751280528694875,
+    5461459867484431182
+  ],
+  "version": 1
+}

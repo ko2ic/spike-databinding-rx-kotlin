@@ -6,17 +6,18 @@ import dagger.android.AndroidInjection
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasFragmentInjector
 import jp.ra9.ui.controllers.FragmentHolder
-import jp.ra9.ui.controllers.ViewModelHolder
 import ko2ic.sample.R
 import ko2ic.sample.databinding.ActivityItemListBinding
 import ko2ic.sample.ui.fragment.ItemFragment
-import ko2ic.sample.ui.viewmodel.MyListViewModel
+import ko2ic.sample.viewmodel.MyListViewModel
+import ko2ic.sample.viewmodel.ViewModelHolder
 import javax.inject.Inject
 
 
 class ItemListActivity : android.support.v7.app.AppCompatActivity(), HasFragmentInjector, ViewModelHolder<MyListViewModel>, FragmentHolder<ItemFragment> {
 
-    @Inject lateinit var androidInjector: DispatchingAndroidInjector<Fragment>
+    @Inject
+    lateinit var androidInjector: DispatchingAndroidInjector<Fragment>
 
     @Inject
     override lateinit var fragment: ItemFragment

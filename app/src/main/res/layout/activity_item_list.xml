@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="ko2ic.sample.ui.viewmodel.MyListViewModel" />
+            type="ko2ic.sample.viewmodel.MyListViewModel" />
     </data>
 
     <LinearLayout

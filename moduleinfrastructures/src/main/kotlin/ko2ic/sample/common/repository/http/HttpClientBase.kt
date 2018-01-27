@@ -47,7 +47,7 @@ abstract class HttpClientBase : HttpClientLocator {
                 val excption = throwable
                 var json: String? = null
                 try {
-                    json = excption.response().errorBody().string()
+                    json = excption.response().errorBody()?.string()
                     val map = gson.fromJson<Map<String, Any>>(json, listType)
 
                     HttpErrorTypeException(HttpErrorType.StatusCode(excption.code(), map, throwable))

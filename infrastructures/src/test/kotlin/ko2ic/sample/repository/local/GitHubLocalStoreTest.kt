@@ -1,17 +1,29 @@
 package ko2ic.sample.repository.local
 
+import ko2ic.sample.test.AbstractObjectBoxTest
+import ko2ic.sample.test.RxImmediateSchedulerRule
 import org.junit.After
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
 
-class GitHubLocalStoreTest {
+class GitHubLocalStoreTest : AbstractObjectBoxTest() {
+
+    // https://github.com/powermock/powermock/issues/687
+    // TODO: 本当は、@ClassRuleにしたいが、PowerMockRunnerを利用すると動かないバグがある
+    @Rule
+    @JvmField
+    val schedulers: RxImmediateSchedulerRule = RxImmediateSchedulerRule()
+
     @Before
-    fun setUp() {
+    override fun setUp() {
+        super.setUp()
     }
 
     @After
-    fun tearDown() {
+    override fun tearDown() {
+        super.tearDown()
     }
 
     @Test
@@ -24,4 +36,16 @@ class GitHubLocalStoreTest {
 //        Assert.assertNull(result)
     }
 
+
+    @Test
+    fun findReposForObjectbox() {
+        // TODO: macでの単体テストをサポートしていないようだ.https://github.com/objectbox/objectbox-java/issues/19
+//        val target = GitHubLocalStore(store)
+//        val testSubscriber = target.findReposForObjectbox("ko2ic", 1).test()
+//        testSubscriber.awaitTerminalEvent()
+//
+//        testSubscriber.assertNoErrors().assertValue(TestUtils.check<SearchResultForObjectbox>(Consumer<SearchResultForObjectbox> { t ->
+//            Assert.assertThat("query", t.query, CoreMatchers.`is`("ko2ic"))
+//        }))
+    }
 }

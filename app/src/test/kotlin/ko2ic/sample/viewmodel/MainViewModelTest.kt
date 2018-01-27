@@ -4,7 +4,6 @@ import android.view.MenuItem
 import io.reactivex.subjects.PublishSubject
 import ko2ic.sample.R
 import ko2ic.sample.test.TestUtils
-import ko2ic.sample.ui.viewmodel.MainViewModel
 import ko2ic.sample.ui.viewmodel.common.TransitionType
 import org.junit.Test
 import org.mockito.Mockito

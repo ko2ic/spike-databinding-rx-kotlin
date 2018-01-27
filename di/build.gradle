@@ -4,7 +4,7 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 26
-    
+
     defaultConfig {
         minSdkVersion 15
 
@@ -33,13 +33,24 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile project(':domains')
-    compile project(':infrastructures')
-
+    compile(project(':infrastructures')) {
+        exclude group: 'org.jetbrains.kotlin'
+        exclude group: 'org.jetbrains.kotlinx'
+        exclude group: 'com.google.dagger'
+        exclude group: 'io.reactivex.rxjava2'
+        exclude group: 'io.realm'
+        exclude group: "io.objectbox"
+    }
     provided libraries.dagger_provided
     annotationProcessor libraries.dagger_annotationProcessor
     kapt libraries.dagger_kapt
     implementation libraries.dagger
+
+    debugImplementation "io.objectbox:objectbox-android-objectbrowser:$objectbox_version"
+    releaseImplementation "io.objectbox:objectbox-android:$objectbox_version"
+    implementation "io.objectbox:objectbox-kotlin:$objectbox_version"
+    implementation "io.objectbox:objectbox-rxjava:0.9.8"
+
 
     androidTestImplementation libraries.test_android_compile
     testImplementation libraries.test_compile

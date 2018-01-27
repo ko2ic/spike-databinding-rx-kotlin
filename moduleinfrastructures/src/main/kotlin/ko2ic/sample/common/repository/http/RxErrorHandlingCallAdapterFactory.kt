@@ -23,8 +23,7 @@ class RxErrorHandlingCallAdapterFactory private constructor() : CallAdapter.Fact
         }
     }
 
-    override fun get(returnType: Type, annotations: Array<Annotation>, retrofit: Retrofit): CallAdapter<*, *>
-            = RxCallAdapterWrapper(retrofit, original.get(returnType, annotations, retrofit))
+    override fun get(returnType: Type, annotations: Array<Annotation>, retrofit: Retrofit): CallAdapter<*, *> = RxCallAdapterWrapper(retrofit, original.get(returnType, annotations, retrofit)!!)
 
 
     private class RxCallAdapterWrapper<R>(private val retrofit: Retrofit, private val wrapped: CallAdapter<R, *>) : CallAdapter<R, Any> {

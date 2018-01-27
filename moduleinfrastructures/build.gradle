@@ -33,7 +33,13 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile project(':moduledomains')
+    compile(project(':moduledomains')) {
+        exclude group: 'org.jetbrains.kotlin'
+        exclude group: 'org.jetbrains.kotlinx'
+        exclude group: 'com.google.dagger:dagger-android'
+        exclude group: 'io.realm'
+        exclude group: 'io.objectbox'
+    }
 
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version", {
@@ -46,6 +52,10 @@ dependencies {
     annotationProcessor libraries.dagger_annotationProcessor
     kapt libraries.dagger_kapt
     implementation libraries.dagger
+
+    debugImplementation "io.objectbox:objectbox-android-objectbrowser:$objectbox_version"
+    releaseImplementation "io.objectbox:objectbox-android:$objectbox_version"
+    implementation "io.objectbox:objectbox-kotlin:$objectbox_version"
 
     androidTestImplementation libraries.test_android_compile
     testImplementation libraries.test_compile

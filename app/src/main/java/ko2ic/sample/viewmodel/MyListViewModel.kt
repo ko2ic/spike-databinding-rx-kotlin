@@ -1,4 +1,4 @@
-package ko2ic.sample.ui.viewmodel
+package ko2ic.sample.viewmodel
 
 import android.databinding.ObservableArrayList
 import android.databinding.ObservableField
@@ -7,12 +7,12 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.Action
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
-import ko2ic.sample.common.repository.TransactionTemplate
 import ko2ic.sample.model.GitHub
+import ko2ic.sample.ui.viewmodel.ViewModel
 import ko2ic.sample.ui.viewmodel.common.TransitionType
 import javax.inject.Inject
 
-class MyListViewModel @Inject constructor(var tx: TransactionTemplate, val domain: GitHub) : ViewModel {
+class MyListViewModel @Inject constructor(val domain: GitHub) : ViewModel {
 
     val input = ObservableField("")
 
@@ -22,26 +22,27 @@ class MyListViewModel @Inject constructor(var tx: TransactionTemplate, val domai
 
     private val compositeDisposable = CompositeDisposable()
 
-//    fun onSearchClick(text: String) {
-//        if (text.isNotEmpty()) {
-//            val usecase = GitHubUseCase().fetchRepos(text, 1)
-//
-//            val disposable = usecase.map { repos ->
-//                repos.items.map { repo ->
-//                    MyItemViewModel(repo)
-//                }
-//            }.observeOn(AndroidSchedulers.mainThread()).subscribe(this::render)
-//
-//            compositeDisposable.add(disposable)
-//        }
-//    }
-
     fun onSearchClick(): Action = Action {
         val ovservable = domain.fetchRepos(input.get(), 1)
 
         val disposable = ovservable.map { repos ->
             repos.items.map { repo ->
-                MyItemViewModel(repo, event)
+                MyItemViewModelForRealm(repo, event)
+            }
+        }.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::render, this::error)
+
+        compositeDisposable.add(disposable)
+    }
+
+
+    fun onSearchClick2(): Action = Action {
+        val ovservable = domain.fetchReposForObjectbox(input.get(), 1)
+
+        val disposable = ovservable.map { repos ->
+            repos.items.map { repo ->
+                MyItemViewModelForObjectbox(repo, event)
             }
         }.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

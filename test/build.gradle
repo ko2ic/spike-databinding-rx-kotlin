@@ -11,8 +11,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation "io.reactivex.rxjava2:rxjava:2.1.1"
-    implementation "org.mockito:mockito-core:2.+"
-    implementation "org.assertj:assertj-core:3.+"
+    implementation libraries.test_compile
+
+    implementation "io.objectbox:objectbox-kotlin:$objectbox_version"
 }
 
 sourceCompatibility = "1.7"

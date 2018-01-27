@@ -6,18 +6,32 @@ apply plugin: 'realm-android'
 
 kapt {
     generateStubs = true
+    arguments {
+        arg("objectbox.debug", true)
+    }
 }
 
 android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dexOptions {
+        javaMaxHeapSize "2g"
+    }
+
+
     compileSdkVersion 25
     buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId "ko2ic.sample"
-        minSdkVersion 15
+        minSdkVersion 21
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -56,8 +70,15 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile project(':di')
-    compile project(':domains')
+    implementation 'com.android.support:multidex:1.0.2'
+
+    compile(project(':di')) {
+        exclude group: 'org.jetbrains.kotlin'
+        exclude group: 'org.jetbrains.kotlinx'
+        exclude group: 'io.realm'
+        exclude group: "com.facebook.stetho:stetho"
+        exclude group: "io.objectbox"
+    }
 
     implementation "com.android.support:appcompat-v7:25.4.0"
     implementation "com.android.support:design:25.4.0"
@@ -72,6 +93,11 @@ dependencies {
     kapt libraries.dagger_kapt
     implementation libraries.dagger
 
+    debugImplementation "io.objectbox:objectbox-android-objectbrowser:$objectbox_version"
+    releaseImplementation "io.objectbox:objectbox-android:$objectbox_version"
+    implementation "io.objectbox:objectbox-kotlin:$objectbox_version"
+
     androidTestImplementation libraries.test_android_compile
     testImplementation libraries.test_compile
 }
+apply plugin: 'io.objectbox'

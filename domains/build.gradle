@@ -2,6 +2,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'realm-android'
+apply plugin: "kotlin-allopen"
+apply plugin: "kotlin-noarg"
 
 android {
     compileSdkVersion 26
@@ -29,10 +31,27 @@ android {
     }
 }
 
+allOpen {
+    annotation("io.realm.annotations.RealmClass")
+}
+noArg {
+    annotation("io.objectbox.annotation.Entity")
+    annotation('io.realm.annotations.RealmClass')
+    invokeInitializers = true
+}
+
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
 
-    compile project(':moduledomains')
+    compile(project(':moduledomains')) {
+        exclude group: 'org.jetbrains.kotlin'
+        exclude group: 'org.jetbrains.kotlinx'
+        exclude group: 'com.google.dagger'
+        exclude group: 'io.reactivex.rxjava2'
+        exclude group: 'com.google.code.gson'
+        exclude group: 'io.realm'
+        exclude group: "io.objectbox"
+    }
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -44,6 +63,13 @@ dependencies {
     kapt libraries.dagger_kapt
     implementation libraries.dagger
 
+    debugImplementation "io.objectbox:objectbox-android-objectbrowser:$objectbox_version"
+    releaseImplementation "io.objectbox:objectbox-android:$objectbox_version"
+    implementation "io.objectbox:objectbox-kotlin:$objectbox_version"
+    implementation "io.objectbox:objectbox-rxjava:0.9.8"
+
     androidTestImplementation libraries.test_android_compile
+    testImplementation project(':test')
     testImplementation libraries.test_compile
 }
+apply plugin: 'io.objectbox'

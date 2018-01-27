@@ -43,6 +43,10 @@ dependencies {
     kapt libraries.dagger_kapt
     implementation libraries.dagger
 
+    debugImplementation "io.objectbox:objectbox-android-objectbrowser:$objectbox_version"
+    releaseImplementation "io.objectbox:objectbox-android:$objectbox_version"
+    implementation "io.objectbox:objectbox-kotlin:$objectbox_version"
+
     androidTestImplementation libraries.test_android_compile
     testImplementation libraries.test_compile
 }

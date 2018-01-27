@@ -54,8 +54,8 @@ class GitHubHttpClientTest {
         testSubscriber.assertNoErrors().assertValue(TestUtils.check<SearchResult>(Consumer<SearchResult> { t ->
             Assert.assertThat("totalCount", t.totalCount, CoreMatchers.`is`(2))
             Assert.assertThat("isIncompleteResults", t.isIncompleteResults, CoreMatchers.`is`(false))
-            Assert.assertThat("items[0].id", t.items[0].id, CoreMatchers.`is`(1))
-            Assert.assertThat("items[0].name", t.items[1].name, CoreMatchers.`is`("test2"))
+            Assert.assertThat("items[0].id", t.items[0]!!.id, CoreMatchers.`is`(1))
+            Assert.assertThat("items[0].name", t.items[1]!!.name, CoreMatchers.`is`("test2"))
         }))
 
         val request = server.takeRequest()

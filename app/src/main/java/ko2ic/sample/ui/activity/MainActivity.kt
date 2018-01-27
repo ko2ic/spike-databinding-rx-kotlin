@@ -12,15 +12,16 @@ import dagger.android.AndroidInjection
 import io.reactivex.disposables.CompositeDisposable
 import ko2ic.sample.R
 import ko2ic.sample.databinding.ActivityMainBinding
-import ko2ic.sample.ui.viewmodel.MainViewModel
 import ko2ic.sample.ui.viewmodel.common.TransitionType
+import ko2ic.sample.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
-    @Inject lateinit var viewModel: MainViewModel
+    @Inject
+    lateinit var viewModel: MainViewModel
 
     private val compositeDisposable = CompositeDisposable()
 

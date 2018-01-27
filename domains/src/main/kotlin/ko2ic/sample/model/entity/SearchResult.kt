@@ -2,10 +2,12 @@ package ko2ic.sample.model.entity
 
 import com.google.gson.annotations.SerializedName
 import io.realm.RealmList
-import io.realm.RealmObject
+import io.realm.RealmModel
 import io.realm.annotations.PrimaryKey
+import io.realm.annotations.RealmClass
 
-open class SearchResult : RealmObject() {
+@RealmClass
+class SearchResult : RealmModel {
 
     @PrimaryKey
     var query = ""
@@ -16,5 +18,6 @@ open class SearchResult : RealmObject() {
     @SerializedName("incomplete_results")
     var isIncompleteResults: Boolean = false
 
+    @SerializedName("items")
     var items: RealmList<Repo> = RealmList()
 }

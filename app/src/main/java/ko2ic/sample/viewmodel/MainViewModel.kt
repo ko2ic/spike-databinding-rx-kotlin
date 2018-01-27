@@ -1,4 +1,4 @@
-package ko2ic.sample.ui.viewmodel
+package ko2ic.sample.viewmodel
 
 import android.databinding.ObservableField
 import android.view.MenuItem

@@ -1,4 +1,4 @@
-package jp.ra9.ui.controllers
+package ko2ic.sample.viewmodel
 
 import ko2ic.sample.ui.viewmodel.ViewModel
 

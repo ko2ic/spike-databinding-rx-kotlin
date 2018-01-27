@@ -1,25 +1,18 @@
-package ko2ic.sample.ui.viewmodel
+package ko2ic.sample.viewmodel
 
 import android.databinding.ObservableField
 import io.reactivex.functions.Action
-import io.reactivex.subjects.PublishSubject
-import ko2ic.sample.model.entity.Repo
-import ko2ic.sample.ui.viewmodel.common.TransitionType
+import ko2ic.sample.ui.viewmodel.CollectionItemViewModel
 
-class MyItemViewModel(val item: Repo, val event: PublishSubject<Pair<Int, TransitionType>>) : CollectionItemViewModel {
 
-    val name = ObservableField("")
+interface MyItemViewModel : CollectionItemViewModel {
 
-    init {
-        this.name.set(item.name)
-    }
+    val haveAdmin: ObservableField<String>
 
-    fun onClickShow(): Action = Action {
-        event.onNext(Pair(item.id, TransitionType.ItemDetail))
-    }
+    val name: ObservableField<String>
 
-    fun onClickDelete(): Action = Action {
-        event.onNext(Pair(item.id, TransitionType.ItemDelete))
-    }
+    val id: Long
 
+    fun onClickShow(): Action
+    fun onClickDelete(): Action
 }

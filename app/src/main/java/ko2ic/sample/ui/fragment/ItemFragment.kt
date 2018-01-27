@@ -10,16 +10,16 @@ import android.view.View
 import android.view.ViewGroup
 import dagger.android.AndroidInjection
 import io.reactivex.android.schedulers.AndroidSchedulers
-import jp.ra9.ui.controllers.ViewModelHolder
 import ko2ic.sample.R
 import ko2ic.sample.databinding.FragmentItemListBinding
 import ko2ic.sample.ui.adapter.ItemViewTypeProvider
 import ko2ic.sample.ui.adapter.RecyclerViewAdapter
 import ko2ic.sample.ui.common.ApiErrorHandler
 import ko2ic.sample.ui.viewmodel.CollectionItemViewModel
-import ko2ic.sample.ui.viewmodel.MyItemViewModel
-import ko2ic.sample.ui.viewmodel.MyListViewModel
 import ko2ic.sample.ui.viewmodel.common.TransitionType
+import ko2ic.sample.viewmodel.MyItemViewModel
+import ko2ic.sample.viewmodel.MyListViewModel
+import ko2ic.sample.viewmodel.ViewModelHolder
 import javax.inject.Inject
 
 
@@ -51,7 +51,7 @@ class ItemFragment @Inject constructor() : Fragment(), ViewModelHolder<MyListVie
                 }
                 TransitionType.ItemDelete -> {
                     val deleteTarget = viewModel.viewModels.filterIndexed { index, viewModel ->
-                        viewModel.item.id == pair.first
+                        viewModel.id == pair.first.toLong()
                     }.first()
                     viewModel.viewModels.remove(deleteTarget)
                 }

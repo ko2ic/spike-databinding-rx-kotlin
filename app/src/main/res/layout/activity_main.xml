@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="ko2ic.sample.ui.viewmodel.MainViewModel" />
+            type="ko2ic.sample.viewmodel.MainViewModel" />
     </data>
 
     <android.support.v4.widget.DrawerLayout
