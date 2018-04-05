@@ -31,7 +31,7 @@ class ItemFragment @Inject constructor() : Fragment(), ViewModelHolder<MyListVie
     @Inject
     override lateinit var viewModel: MyListViewModel
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
         val binding = DataBindingUtil.inflate<FragmentItemListBinding>(

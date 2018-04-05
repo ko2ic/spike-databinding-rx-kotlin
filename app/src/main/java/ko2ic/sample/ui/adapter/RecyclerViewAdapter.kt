@@ -59,9 +59,7 @@ open class RecyclerViewAdapter<T>(private val list: ObservableArrayList<T>,
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        if (inflater == null) {
-            this.inflater = from(parent.getContext());
-        }
+        val inflater = this.inflater ?: from(parent.getContext());
 
         if (viewType == LOADING_LAYOUT) {
             val binding = DataBindingUtil.inflate<ListItemLoadingBinding>(inflater, viewType, parent, false)

@@ -23,7 +23,7 @@ class MyListViewModel @Inject constructor(val domain: GitHub) : ViewModel {
     private val compositeDisposable = CompositeDisposable()
 
     fun onSearchClick(): Action = Action {
-        val ovservable = domain.fetchRepos(input.get(), 1)
+        val ovservable = domain.fetchRepos(input.get() ?: "", 1)
 
         val disposable = ovservable.map { repos ->
             repos.items.map { repo ->
@@ -38,7 +38,7 @@ class MyListViewModel @Inject constructor(val domain: GitHub) : ViewModel {
 
 
     fun onSearchClick2(): Action = Action {
-        val ovservable = domain.fetchReposForObjectbox(input.get(), 1)
+        val ovservable = domain.fetchReposForObjectbox(input.get() ?: "", 1)
 
         val disposable = ovservable.map { repos ->
             repos.items.map { repo ->

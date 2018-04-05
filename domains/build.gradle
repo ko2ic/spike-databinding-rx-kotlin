@@ -55,7 +55,7 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation "com.google.code.gson:gson:2.8.0"
+    implementation "com.google.code.gson:gson:$gson_version"
 
     implementation libraries.rxjava
     provided libraries.dagger_provided

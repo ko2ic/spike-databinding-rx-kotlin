@@ -46,7 +46,7 @@ dependencies {
         exclude group: "com.google.code.gson:gson"
     }
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:3.8.1"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp3_version"
 
     provided libraries.dagger_provided
     annotationProcessor libraries.dagger_annotationProcessor
